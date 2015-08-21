@@ -1,0 +1,295 @@
+<section>
+
+  <div class="container">
+
+    <h1>Matches</h1>
+
+    <% @matches.each do |match| %>
+
+      <section>    
+          <div class="container match-box">
+              <div class="row">
+
+                <div class="col-md-8">
+
+                  <div class="col-md-12">
+
+                      <%= match.date.strftime('%a %e %b %Y %l:%M %P') %>,                  
+
+                      <%= match.name %> <%= match.pool.name unless match.pool.blank? %>,
+
+                      Match <%= match.id %> 
+
+                  </div>
+                  <div class="col-md-12">
+
+
+                    <% unless (match.short_name.blank?) %>
+
+                        <%= match.short_name %>
+
+                    <% end %>
+
+
+
+                    <% if (match.team1.blank?) %>
+
+                        <%= match.knockout_desc1 %>
+
+                    <% else %>
+
+                        <%= match.team1.name %>
+
+                    <% end %>  
+
+                     v 
+
+                    <% if (match.team2.blank?) %>
+
+                        <%= match.knockout_desc2 %>
+
+                    <% else %>
+
+                        <%= match.team2.name %>
+
+                    <% end %> 
+
+
+
+                  </div>      
+                  <div class="col-md-12">
+
+                      <%= match.venue.name %>, <%= match.venue.location %>
+
+                  </div> 
+
+                </div>
+
+
+                <% if current_admin %>
+                  <div class="col-md-4">  
+
+                    <td><%= link_to 'Edit', edit_match_path(match) %></td>
+
+                  </div>
+                <% end %>  
+
+              </div>
+         
+
+          </div>
+      </section>  
+
+    <% end %>  
+
+  </div>  
+
+</section>
+                        
+<!--  _form .html.erb  -->
+                        
+                        <%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :round_id %><br>
+    <%= f.text_field :round_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pool_id %><br>
+    <%= f.text_field :pool_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :short_name %><br>
+    <%= f.text_field :short_name %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_id %><br>
+    <%= f.text_field :venue_id %>
+  </div>
+  <div class="field">
+    <%= f.label :team1 %><br>
+    <%= f.number_field :team1 %>
+  </div>
+  <div class="field">
+    <%= f.label :team2 %><br>
+    <%= f.number_field :team2 %>
+  </div>
+  <div class="field">
+    <%= f.label :knockout_desc1 %><br>
+    <%= f.text_field :knockout_desc1 %>
+  </div>
+  <div class="field">
+    <%= f.label :knockout_desc2 %><br>
+    <%= f.text_field :knockout_desc2 %>
+  </div>
+  <div class="field">
+    <%= f.label :team1_score %><br>
+    <%= f.number_field :team1_score %>
+  </div>
+  <div class="field">
+    <%= f.label :team1_tries %><br>
+    <%= f.number_field :team1_tries %>
+  </div>
+  <div class="field">
+    <%= f.label :team1_points %><br>
+    <%= f.number_field :team1_points %>
+  </div>
+  <div class="field">
+    <%= f.label :team2_score %><br>
+    <%= f.number_field :team2_score %>
+  </div>
+  <div class="field">
+    <%= f.label :team2_tries %><br>
+    <%= f.number_field :team2_tries %>
+  </div>
+  <div class="field">
+    <%= f.label :team2_points %><br>
+    <%= f.number_field :team2_points %>
+  </div>
+  <div class="field">
+    <%= f.label :winner %><br>
+    <%= f.number_field :winner %>
+  </div>
+  <div class="field">
+    <%= f.label :tries %><br>
+    <%= f.number_field :tries %>
+  </div>
+  <div class="field">
+    <%= f.label :margin_id %><br>
+    <%= f.text_field :margin_id %>
+  </div>
+  <div class="field">
+    <%= f.label :played %><br>
+    <%= f.check_box :played %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+    
+<!--    show html.erb-->
+    
+    <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Round:</strong>
+  <%= @match.round %>
+</p>
+
+<p>
+  <strong>Pool:</strong>
+  <%= @match.pool %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @match.name %>
+</p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @match.short_name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @match.date %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @match.venue %>
+</p>
+
+<p>
+  <strong>Team1:</strong>
+  <%= @match.team1 %>
+</p>
+
+<p>
+  <strong>Team2:</strong>
+  <%= @match.team2 %>
+</p>
+
+<p>
+  <strong>Knockout desc1:</strong>
+  <%= @match.knockout_desc1 %>
+</p>
+
+<p>
+  <strong>Knockout desc2:</strong>
+  <%= @match.knockout_desc2 %>
+</p>
+
+<p>
+  <strong>Team1 score:</strong>
+  <%= @match.team1_score %>
+</p>
+
+<p>
+  <strong>Team1 tries:</strong>
+  <%= @match.team1_tries %>
+</p>
+
+<p>
+  <strong>Team1 points:</strong>
+  <%= @match.team1_points %>
+</p>
+
+<p>
+  <strong>Team2 score:</strong>
+  <%= @match.team2_score %>
+</p>
+
+<p>
+  <strong>Team2 tries:</strong>
+  <%= @match.team2_tries %>
+</p>
+
+<p>
+  <strong>Team2 points:</strong>
+  <%= @match.team2_points %>
+</p>
+
+<p>
+  <strong>Winner:</strong>
+  <%= @match.winner %>
+</p>
+
+<p>
+  <strong>Tries:</strong>
+  <%= @match.tries %>
+</p>
+
+<p>
+  <strong>Margin:</strong>
+  <%= @match.margin %>
+</p>
+
+<p>
+  <strong>Played:</strong>
+  <%= @match.played %>
+</p>
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>
+

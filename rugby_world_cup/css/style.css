@@ -36,28 +36,32 @@ body {
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus{
-    background: #81ce33 !important;
+    background: #0383c0 !important;
     color: #fff !important;
 }
 
 h1, h2, h3{
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
-    color: #81ce33 !important;
+    color: #fff !important;
+    background-color: #0383c0;
+    padding: 10px;
 }
 
 .jumbotron{
     margin: 0 !important;
     min-height: 300px;
-    background: url(../img/) no-repeat;
+    background: url(../img/Pitch_Grass.PNG);
 }
+
+
 
 /* Log In and Sign Up forms ===============================*/
 
 body#login {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #81ce33 !important;
+  background-color: #0383c0 !important;
   color: #fff;
 }
 
@@ -102,18 +106,30 @@ body#login h2{
 
 /* Log In and Sign Up forms End  */
 
-/*widget*/
+/*container*/
 
+.container{
+    margin-top: 1px;
+    padding-top: 5px;
+}
 
+/*container end*/
 
+/*Header*/
+
+.page-header{
+    background-color: #fff;
+    padding: 5px;
+}
+
+/*Header End*/
 /*  Footer  */
 
 footer{
-    margin-top: 30px;
     padding-top: 20px;
     height: 60px;
     text-align: center;
-    background-color: #81ce33;
+    background-color: #0383c0;
     color: #fff;
 }
 

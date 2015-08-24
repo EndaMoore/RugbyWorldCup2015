@@ -40,7 +40,7 @@ body {
     color: #fff !important;
 }
 
-h1, h2 {
+h1, h2, h3 {
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
     color: #fff !important;
@@ -138,3 +138,7 @@ footer{
 }
 
 /*  Footer End  ========================================== */
+
+span{
+    float: right;
+}

@@ -139,6 +139,20 @@ footer{
 
 /*  Footer End  ========================================== */
 
-span{
-    float: right;
+/* Matches page style sheet*/
+
+.matches{
+    padding: 20px,0;
+    text-align: center;
 }
+
+.matches{
+    border: solid;
+    
+}
+
+.fa-color{
+    color: #0383c0;
+}
+/* Matches page style sheet End ===========================*/
+
